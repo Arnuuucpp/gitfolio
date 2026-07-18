@@ -10,10 +10,13 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@fontsource/archivo-black": "^5.2.8",
+    "@fontsource/space-grotesk": "^5.2.10",
     "@tailwindcss/vite": "^4.3.3",
     "axios": "^1.18.1",
     "react": "^19.2.5",
     "react-dom": "^19.2.5",
+    "remixicon": "^4.9.1",
     "tailwindcss": "^4.3.3"
   },
   "devDependencies": {
