@@ -7,23 +7,32 @@ import "@fontsource/space-grotesk/500.css";
 import "@fontsource/space-grotesk/700.css";
 import "@fontsource/archivo-black";
 import Heatmap from "./Components/Heatmap";
+import PinnedRepos from "./Components/PinnedRepos";
+import Swal from "sweetalert2"
+import Alert from "./Components/AlertModal";
 
 const App = () => {
   const [Username, setUsername] = useState("");
   const [UserData, setUserData] = useState(null);
   const [repo, setrepo] = useState(null);
 
+  const [alert, setAlert] = useState({ show: false, message: '', type: 'error' });
+
   const getData = async () => {
     try {
       const response = await Axios.get(`https://api.github.com/users/${Username}`)
       const repo = await Axios.get(`https://api.github.com/users/${Username}/repos`)
       console.log(response.data);
-      console.log(repo.data[2].name);
+      // console.log(repo.data[2].name);
 
       setUserData(response.data);
       setrepo(repo.data);
     } catch (error) {
-      console.log("User not found or API error", error);
+      setAlert({
+        show:true,
+        message: "User not found or API error...Try Again!!", 
+        type: 'error'
+      })
     }
   };
 
@@ -59,14 +68,23 @@ const App = () => {
       </div>
 
       {/* hero section */}
-      <div className="grid grid-cols-[660px_1fr] gap-3">
-        <Card UserData={UserData} repo={repo} />  {/* left, already done */}
+      <div className="grid grid-cols-[660px_1fr] gap-3 bg-[#f5f5f5] h-screen">
+        <Card UserData={UserData} repo={repo} />
 
         <div className="flex flex-col gap-2">
           {UserData && <Heatmap username={UserData.login} />}
-          {/* <RepoGrid repo={repo} />                  below heatmap, your existing repo cards */}
+          {repo && <PinnedRepos repo={repo}/>}
         </div>
       </div>
+
+      {/* ✅ Adding ALERT COMPONENT HERE */}
+      {alert.show && (
+        <Alert 
+          message={alert.message} 
+          type={alert.type} 
+          onClose={() => setAlert({ ...alert, show: false })} 
+        />
+      )}
     </div>
   );
 };

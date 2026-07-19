@@ -5,7 +5,9 @@ import App from './App.jsx'
 import 'remixicon/fonts/remixicon.css'
 
 createRoot(document.getElementById('root')).render(
-  <StrictMode>
-    <App />
-  </StrictMode>,
+  <>
+  <div className='bg-[#f5f5f5] h-screen w-screen'>
+  <App />
+  </div>
+  </>
 )

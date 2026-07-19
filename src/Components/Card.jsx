@@ -4,7 +4,7 @@ const Card = (props) => {
   if (!props.UserData) return null;
   // console.log(props.UserData)
   if (!props.repo) return null;
-  console.log(props.repo);
+  // console.log(props.repo);
 
   let Username = props.UserData.login
 
@@ -16,7 +16,7 @@ const Card = (props) => {
         })}
       </div> */}
 
-      <div className="flex flex-col gap-2 mb-3">
+      <div className="flex flex-col gap-2 mb-3 ml-4">
         <h1 className="font-archivo text-2xl ">USER INFO</h1>
         <div className="font-grotesk text-sm w-fit h-fit bg-[#F5C518] border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] px-2 py-2 text-black font-semibold focus:outline-none cursor-cell relative flex gap-2 items-center">
           <img
