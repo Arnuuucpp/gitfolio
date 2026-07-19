@@ -7,7 +7,8 @@ const Navbar = () => {
         <i className="ri-github-fill text-3xl text-black hover:scale-110 cursor-pointer"></i>
         <span className="font-archivo text-xl text-black">GITFOLIO</span>
         <p class="text-black font-sans text-sm font-normal  inline-block absolute left-16 top-14">
-          Browse users and their profiles via <a target="blank"
+          Browse users and their profiles via 
+          <a target="blank"
             href="https://developer.github.com/v3/"
             class="text-[#269930] no-underline hover:underline transition-colors duration-200"
           >
