@@ -18,6 +18,7 @@
     "react-dom": "^19.2.5",
     "react-github-calendar": "^5.0.6",
     "remixicon": "^4.9.1",
+    "styled-components": "^6.4.4",
     "sweetalert2": "^11.26.25",
     "tailwindcss": "^4.3.3"
   },

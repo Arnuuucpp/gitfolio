@@ -1,4 +1,5 @@
 import React from "react";
+import Checkbox from "./Checkbox";
 
 const Card = (props) => {
   if (!props.UserData) return null;
@@ -27,6 +28,9 @@ const Card = (props) => {
 
           <div className="flex flex-col mt-1">
             <h1 className="text-2xl">{props.UserData.name}</h1>
+            <Checkbox/>
+            <div className="absolute right-14 top-2 border-none">
+            </div>
             <span>
               <p className="font-light font-grotesk mb-2">@{props.UserData.login}</p>
             </span>

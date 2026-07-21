@@ -68,7 +68,7 @@ const App = () => {
       </div>
 
       {/* hero section */}
-      <div className="grid grid-cols-[660px_1fr] gap-3 bg-[#f5f5f5] h-screen">
+      <div className="grid grid-cols-[660px_1fr] gap-3 bg-[#f5f5f5]">
         <Card UserData={UserData} repo={repo} />
 
         <div className="flex flex-col gap-2">
