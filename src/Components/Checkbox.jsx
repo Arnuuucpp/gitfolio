@@ -35,7 +35,7 @@ const StyledWrapper = styled.div`
   .ui-like .like {
     width: var(--icon-size);
     height: auto;
-    fill: var(--icon-secondary-color);
+    fill: rgb(33 33 33);
     cursor: pointer;
     -webkit-transition: 0.2s;
     -o-transition: 0.2s;
@@ -93,7 +93,7 @@ const StyledWrapper = styled.div`
   /* actions */
 
   .ui-like:hover .like {
-    fill: var(--icon-hover-color);
+    fill: rgb(126 7 7);
   }
 
   .ui-like input:checked + .like::after {
@@ -217,4 +217,4 @@ const StyledWrapper = styled.div`
     }
   }`;
 
-export default Checkbox;
+export default checkbox
