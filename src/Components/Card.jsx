@@ -9,7 +9,7 @@ const Card = (props) => {
   // console.log(props.repo);
 
   let Username = props.UserData.login;
-  // const navigate = useNavigate()
+  const navigate = useNavigate()
 
   return (
     <div>
@@ -131,7 +131,7 @@ const Card = (props) => {
               <button
                 className="font-grotesk text-sm w-full bg-[#8fbdf8] border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] px-10 py-3 text-black font-semibold focus:outline-none cursor-pointer active:scale-95 whitespace-nowrap"
                 onClick={() => {
-                  
+                  navigate("/allrepos")
                 }}
               >
                 all repos
