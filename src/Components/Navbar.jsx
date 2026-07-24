@@ -7,7 +7,11 @@ const Navbar = () => {
       <div className="flex flex-col">
         <div className="flex items-center gap-2">
           <i className="ri-github-fill text-3xl text-black hover:scale-110 cursor-pointer"></i>
-          <span className="font-archivo text-xl text-black">GITFOLIO</span>
+          <span
+            className="font-archivo text-xl text-black cursor-pointer"
+          >
+            GITFOLIO
+          </span>
         </div>
         <p className="text-black font-sans text-sm font-normal">
           Browse users and their profiles via{" "}
@@ -16,7 +20,7 @@ const Navbar = () => {
             rel="noopener noreferrer"
             href="https://developer.github.com/v3/"
             className="text-[#269930] no-underline hover:underline transition-colors duration-200"
-            >
+          >
             the GitHub API
           </a>
         </p>

@@ -9,16 +9,11 @@ const Card = (props) => {
   // console.log(props.repo);
 
   let Username = props.UserData.login;
-  const navigate = useNavigate()
+
+  const navigate = useNavigate();
 
   return (
     <div>
-      {/* <div>
-        {(props.repo).map((e)=>{
-          return <h1 className='text-white' key={e.id}>{e.name}</h1>
-        })}
-      </div> */}
-
       <div className="flex flex-col gap-2 mb-3 ml-4">
         <h1 className="font-archivo text-2xl ">User Info</h1>
         <div className="font-grotesk text-sm w-fit h-fit bg-[#F5C518] border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] px-2 py-2 text-black font-semibold focus:outline-none cursor-cell relative flex gap-2 items-center">
@@ -131,7 +126,7 @@ const Card = (props) => {
               <button
                 className="font-grotesk text-sm w-full bg-[#8fbdf8] border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] px-10 py-3 text-black font-semibold focus:outline-none cursor-pointer active:scale-95 whitespace-nowrap"
                 onClick={() => {
-                  navigate("/allrepos")
+                  navigate(`/${Username}/repos`);
                 }}
               >
                 all repos
