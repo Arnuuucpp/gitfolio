@@ -15,13 +15,15 @@ const Home = () => {
   const [UserData, setUserData] = useState(null);
   const [repo, setrepo] = useState(null);
 
-  const [recentSearches, setrecentSearches] = useState('')
+  const [recentSearches, setrecentSearches] = useState([]);
 
   const [alert, setAlert] = useState({
     show: false,
     message: "",
     type: "error",
   });
+
+  const [showHistory, setshowHistory] = useState(false);
 
   const getData = async () => {
     try {
@@ -50,11 +52,12 @@ const Home = () => {
 
       const newArr = [currentUsername, ...withoutDuplicate];
 
-      localStorage.setItem("recentSearches", JSON.stringify(newArr.slice(0,5)))
+      localStorage.setItem(
+        "recentSearches",
+        JSON.stringify(newArr.slice(0, 5)),
+      );
+      setrecentSearches(newArr.slice(0, 5));
       // console.log(newArr);
-
-      
-
     } catch (error) {
       setAlert({
         show: true,
@@ -64,9 +67,10 @@ const Home = () => {
     }
   };
 
-  useEffect(()=>{
-
-  },[])
+  useEffect(() => {
+    const saved = JSON.parse(localStorage.getItem("recentSearches")) ?? [];
+    setrecentSearches(saved);
+  }, []);
 
   return (
     <div>
@@ -86,7 +90,25 @@ const Home = () => {
                 // console.log(e.target.value)
                 setUsername(e.target.value);
               }}
+              onFocus={() => setshowHistory(true)}
+              onBlur={()=>{setshowHistory(false)}}
             />
+            {showHistory && recentSearches.length > 0 && (
+              <ul className="font-grotesk text-sm bg-[#c0c492e7] border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] px-10 py-3 text-black font-semibold focus:outline-none mt-2 absolute w-full z-50">
+                {recentSearches.map((item, idx) => (
+                  <li
+                    key={idx}
+                    onMouseDown={() => {
+                      setUsername(item);
+                      setshowHistory(false);
+                    }}
+                    className="cursor-pointer hover:bg-[#55442a7c] px-2 py-1"
+                  >
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            )}
           </div>
           <button
             className="font-grotesk text-sm w-fit bg-[#FF6B4A] border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] px-10 py-3 text-black font-semibold focus:outline-none cursor-pointer active:scale-95"

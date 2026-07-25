@@ -10,7 +10,7 @@ const Navbar = () => {
           <span
             className="font-archivo text-xl text-black cursor-pointer"
           >
-            GITFOLIO
+          <Link to="/">GITFOLIO</Link>
           </span>
         </div>
         <p className="text-black font-sans text-sm font-normal">

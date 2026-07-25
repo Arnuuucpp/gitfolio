@@ -1,6 +1,7 @@
 import React from "react";
 import Checkbox from "./checkbox";
 import { Route, Routes, useNavigate } from "react-router-dom";
+import { BarChart, Bar, XAxis, YAxis, ResponsiveContainer } from "recharts";
 
 const Card = (props) => {
   if (!props.UserData) return null;
@@ -27,7 +28,7 @@ const Card = (props) => {
             <h1 className="text-2xl">{props.UserData.name}</h1>
             <div className="absolute right-3 flex gap-4 justify-around top-11 text-2xl font-extralight">
               <i
-                class="ri-twitter-x-line"
+                className="ri-twitter-x-line"
                 onClick={() => {
                   window.open(
                     `https://x.com/${props.UserData.twitter_username}`,
@@ -37,7 +38,7 @@ const Card = (props) => {
                 }}
               ></i>
               <i
-                class="ri-user-5-fill"
+                className="ri-user-5-fill"
                 onClick={() => {
                   window.open(
                     `https://${props.UserData.blog}`,
@@ -134,6 +135,41 @@ const Card = (props) => {
             </div>
           </div>
         </div>
+        <button className="font-grotesk text-sm w-full rounded bg-[#41a062] border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] px-10 py-3 text-white font-semibold focus:outline-none cursor-pointer active:scale-95">
+          Share this Profile <i className="ri-share-forward-line"></i>
+        </button>
+
+        {(() => {
+          const languageCounts = {};
+          props.repo.forEach((e) => {
+            if (e.language) {
+              languageCounts[e.language] =
+                (languageCounts[e.language] || 0) + 1;
+            }
+          });
+
+          const chartData = Object.entries(languageCounts).map(
+            ([name, count]) => ({
+              name,
+              count,
+            }),
+          );
+
+          console.log(chartData);
+
+          return (
+            <div className="bg-white w-full h-72 border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] p-2 rounded-2xl">
+              <h3 className="font-archivo text-lg mb-2 ml-2 text-black text-center">Top Languages</h3>
+              <ResponsiveContainer width="100%" height="80%">
+                <BarChart data={chartData} layout="vertical">
+                  <XAxis type="number" hide />
+                  <YAxis type="category" dataKey="name" width={80} />
+                  <Bar dataKey="count" fill="#FF6B4A" />
+                </BarChart>
+              </ResponsiveContainer>
+            </div>
+          );
+        })()}
       </div>
     </div>
   );

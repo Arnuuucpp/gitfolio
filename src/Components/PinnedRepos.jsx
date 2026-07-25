@@ -5,9 +5,9 @@ const PinnedRepos = (props) => {
 
     return (
         <>
-            <h3 className="font-archivo text-2xl mb-2">Pinned Repos</h3>
+            <h3 className="font-archivo text-2xl mb-2 mt-4">Pinned Repos</h3>
             <div className="flex flex-wrap gap-2 justify-start mb-10">
-                {props.repo.slice(0, 8).map((e) => {
+                {props.repo.slice(0, 9).map((e) => {
                     const date = new Date(e.updated_at);
                     const humanReadable = date.toLocaleDateString();
 
