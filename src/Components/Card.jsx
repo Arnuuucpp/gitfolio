@@ -2,6 +2,7 @@ import React from "react";
 import Checkbox from "./checkbox";
 import { Route, Routes, useNavigate } from "react-router-dom";
 import { BarChart, Bar, XAxis, YAxis, ResponsiveContainer } from "recharts";
+import Swal from "sweetalert2";
 
 const Card = (props) => {
   if (!props.UserData) return null;
@@ -135,7 +136,29 @@ const Card = (props) => {
             </div>
           </div>
         </div>
-        <button className="font-grotesk text-sm w-full rounded bg-[#41a062] border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] px-10 py-3 text-white font-semibold focus:outline-none cursor-pointer active:scale-95">
+        <button
+          className="font-grotesk text-sm w-full rounded bg-[#41a062] border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] px-10 py-3 text-white font-semibold focus:outline-none cursor-pointer active:scale-95"
+          onClick={async () => {
+            const profileUrl = `https://github.com/${Username}`;
+
+            try {
+              await navigator.clipboard.writeText(profileUrl);
+              Swal.fire({
+                icon: "success",
+                title: "Profile link copied!",
+                text: profileUrl,
+                timer: 1800,
+                showConfirmButton: false,
+              });
+            } catch (error) {
+              Swal.fire({
+                icon: "error",
+                title: "Copy failed",
+                text: "Your browser blocked clipboard access.",
+              });
+            }
+          }}
+        >
           Share this Profile <i className="ri-share-forward-line"></i>
         </button>
 
