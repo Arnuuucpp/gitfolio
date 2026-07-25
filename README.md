@@ -2,7 +2,7 @@
 
 A GitHub profile analyzer built with React — search any GitHub username and instantly see their profile, contribution activity, pinned repos, top languages, and full repo list.
 
-**Live demo:** []
+**Live demo:** [gitfolio-taupe.vercel.app]
 
 ---
 
