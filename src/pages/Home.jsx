@@ -4,7 +4,7 @@ import "@fontsource/space-grotesk/400.css";
 import "@fontsource/space-grotesk/500.css";
 import "@fontsource/space-grotesk/700.css";
 import "@fontsource/archivo-black";
-import Swal from "sweetalert2"
+import Swal from "sweetalert2";
 import Alert from "../Components/AlertModal";
 import Card from "../Components/Card";
 import Heatmap from "../Components/Heatmap";
@@ -15,6 +15,8 @@ const Home = () => {
   const [UserData, setUserData] = useState(null);
   const [repo, setrepo] = useState(null);
 
+  const [recentSearches, setrecentSearches] = useState('')
+
   const [alert, setAlert] = useState({
     show: false,
     message: "",
@@ -22,7 +24,6 @@ const Home = () => {
   });
 
   const getData = async () => {
-
     try {
       const response = await Axios.get(
         `https://api.github.com/users/${Username}`,
@@ -35,6 +36,25 @@ const Home = () => {
 
       setUserData(response.data);
       setrepo(repo.data);
+
+      //implementing localStorage for recent search history
+
+      const existing = JSON.parse(localStorage.getItem("recentSearches")) ?? [];
+      console.log(existing);
+
+      const currentUsername = response.data.login;
+      const withoutDuplicate = existing.filter(
+        (name) => name != currentUsername,
+      );
+      console.log(withoutDuplicate);
+
+      const newArr = [currentUsername, ...withoutDuplicate];
+
+      localStorage.setItem("recentSearches", JSON.stringify(newArr.slice(0,5)))
+      // console.log(newArr);
+
+      
+
     } catch (error) {
       setAlert({
         show: true,
@@ -44,9 +64,13 @@ const Home = () => {
     }
   };
 
-return (
-<div>
-    <div className="p-10 flex flex-col items-center justify-center">
+  useEffect(()=>{
+
+  },[])
+
+  return (
+    <div>
+      <div className="p-10 flex flex-col items-center justify-center">
         <h1 className="font-archivo text-5xl text-center text-zinc-800">
           find any developer on github...
         </h1>
@@ -71,28 +95,27 @@ return (
             Find Now!
           </button>
         </div>
-    </div>
+      </div>
 
-    {/* hero section */}
+      {/* hero section */}
       <div className="grid grid-cols-[660px_1fr] gap-3 bg-[#f5f5f5]">
         <Card UserData={UserData} repo={repo} />
 
         <div className="flex flex-col gap-2">
           {UserData && <Heatmap username={UserData.login} />}
-          {repo && <PinnedRepos repo={repo}/>}
+          {repo && <PinnedRepos repo={repo} />}
         </div>
       </div>
 
       {/* ✅ Adding ALERT COMPONENT HERE */}
       {alert.show && (
         <Alert
-          message={alert.message} 
-          type={alert.type} 
-          onClose={() => setAlert({ ...alert, show: false })} 
+          message={alert.message}
+          type={alert.type}
+          onClose={() => setAlert({ ...alert, show: false })}
         />
       )}
-</div>
-
+    </div>
   );
 };
 

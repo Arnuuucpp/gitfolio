@@ -7,6 +7,7 @@ const AllRepos = () => {
   const [Reposdata, setReposData] = useState(null);
   const params = useParams();
 
+
   const fetchRepos = async () => {
     try {
       const response = await Axios.get(
@@ -25,7 +26,7 @@ const AllRepos = () => {
 
   return (
     <>
-      <h1 className="font-archivo font-extrabold text-3xl text-center mt-4">All Repositories</h1>
+      <h1 className="font-archivo font-extrabold text-3xl text-center mt-4 mb-4">All Repositories</h1>
       <div className="flex flex-wrap gap-4 p-4 items-center justify-center">
         {Reposdata &&
           Reposdata.map((e) => {
