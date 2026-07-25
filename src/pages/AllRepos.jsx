@@ -26,8 +26,8 @@ const AllRepos = () => {
 
   return (
     <>
-      <h1 className="font-archivo font-extrabold text-3xl text-center mt-4 mb-4">All Repositories</h1>
-      <div className="flex flex-wrap gap-4 p-4 items-center justify-center">
+      <h1 className="font-archivo font-extrabold text-3xl text-center mt-4 mb-4">{params.username}'s Repositories</h1>
+      <div className="flex flex-wrap gap-4 p-4 items-center justify-center mb-6">
         {Reposdata &&
           Reposdata.map((e) => {
             const date = new Date(e.updated_at);

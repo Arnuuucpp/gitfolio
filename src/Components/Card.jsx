@@ -5,10 +5,18 @@ import { BarChart, Bar, XAxis, YAxis, ResponsiveContainer } from "recharts";
 import Swal from "sweetalert2";
 
 const Card = (props) => {
-  if (!props.UserData) return null;
-  // console.log(props.UserData)
-  if (!props.repo) return null;
-  // console.log(props.repo);
+  if (!props.UserData || !props.repo) {
+    return (
+      <div className="w-332 ml-4">
+        <div className="border-2 border-black bg-[#f8f8f8] shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] p-6 text-center flex flex-col items-center justify-center">
+          <h2 className="font-archivo text-xl text-black">GitHub profile will appear here</h2>
+          <p className="font-grotesk text-sm mt-2 text-black">
+            Search for a GitHub username to view their profile card and stats.
+          </p>
+        </div>
+      </div>
+    );
+  }
 
   let Username = props.UserData.login;
 
@@ -137,7 +145,7 @@ const Card = (props) => {
           </div>
         </div>
         <button
-          className="font-grotesk text-sm w-full rounded bg-[#41a062] border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] px-10 py-3 text-white font-semibold focus:outline-none cursor-pointer active:scale-95"
+          className="font-grotesk text-sm w-full rounded bg-[#41a062] hover:bg-[#69b684] hover:text-black border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] px-10 py-3 text-white font-semibold focus:outline-none cursor-pointer active:scale-95 transition-all"
           onClick={async () => {
             const profileUrl = `https://github.com/${Username}`;
 

@@ -73,7 +73,7 @@ const Home = () => {
   }, []);
 
   return (
-    <div>
+    <div className="flex flex-col">
       <div className="p-10 flex flex-col items-center justify-center">
         <h1 className="font-archivo text-5xl text-center text-zinc-800">
           find any developer on github...
