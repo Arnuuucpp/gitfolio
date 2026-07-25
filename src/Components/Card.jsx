@@ -1,5 +1,5 @@
 import React from "react";
-import Checkbox from "./checkbox";
+import Checkbox from "./Checkbox";
 import { Route, Routes, useNavigate } from "react-router-dom";
 import { BarChart, Bar, XAxis, YAxis, ResponsiveContainer } from "recharts";
 import Swal from "sweetalert2";
