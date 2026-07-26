@@ -17,7 +17,8 @@ const Navbar = () => {
           Browse users and their profiles via{" "}
           <a
             target="_blank"
-            rel="noopener noreferrer"
+            rel="noopener noreferrer"  
+            
             href="https://developer.github.com/v3/"
             className="text-[#269930] no-underline hover:underline transition-colors duration-200"
           >
