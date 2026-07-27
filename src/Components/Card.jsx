@@ -7,11 +7,9 @@ import Swal from "sweetalert2";
 const Card = (props) => {
   if (!props.UserData || !props.repo) {
     return (
-      <div className="md:w-332 w-fit m-2 md:ml-4">
+      <div className="md:w-332 w-full md:ml-4">
         <div className="border-2 border-black bg-[#f8f8f8] shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] p-6 text-center flex flex-col items-center justify-center">
-          <h2 className="font-archivo text-xl text-black">
-            GitHub profile will appear here
-          </h2>
+          <h2 className="font-archivo text-xl text-black">GitHub profile will appear here</h2>
           <p className="font-grotesk text-sm mt-2 text-black">
             Search for a GitHub username to view their profile card and stats.
           </p>
@@ -25,34 +23,31 @@ const Card = (props) => {
   const navigate = useNavigate();
 
   return (
-    <div className="p-2 md:p-0">
-      <div className="flex flex-col gap-4 mb-3 md:ml-4 max-w-2xl">
+    <div>
+      <div className="flex flex-col gap-2 mb-3 ml-1 mr-1 md:ml-4">
         <h1 className="font-archivo text-2xl ">User Info</h1>
-
-        <div className="font-grotesk text-sm w-full md:w-fit h-fit bg-[#F5C518] border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] px-4 py-4 text-black font-semibold focus:outline-none cursor-cell relative flex flex-col md:flex-row gap-4 items-center md:items-start">
+        
+        {/* Mobile stacks (flex-col), Desktop goes back to original w-fit h-fit flex-row */}
+        <div className="font-grotesk text-sm w-full md:w-fit h-fit bg-[#F5C518] border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] p-2 md:px-2 md:py-2 text-black font-semibold focus:outline-none cursor-cell relative flex flex-col md:flex-row gap-4 md:gap-2 items-center">
+          
           <img
             src={props.UserData.avatar_url}
             alt="rendering"
-            className="w-32 h-32 md:w-40 md:h-40 border-2 border-black object-cover object-center shrink-0"
+            className="w-32 h-32 md:w-67.5 md:h-62.5 border-2 border-zinc-90 object-cover object-center shrink-0 mb-0"
           />
 
-          <div className="flex flex-col mt-1 w-full text-center md:text-left">
+          <div className="flex flex-col mt w-full text-center md:text-left">
             <h1 className="text-2xl">{props.UserData.name}</h1>
+            
 
-            <span>
-              <p className="font-light font-grotesk mb-2">
-                @{props.UserData.login}
-              </p>
-            </span>
-
-            <div className="flex gap-4 justify-center md:justify-start items-center text-2xl font-extralight mb-4">
+            <div className="flex md:absolute md:right-3 md:top-11 justify-center md:justify-around gap-4 text-2xl font-extralight my-2 md:my-0">
               <i
                 className="ri-twitter-x-line cursor-pointer"
                 onClick={() => {
                   window.open(
                     `https://x.com/${props.UserData.twitter_username}`,
                     "_blank",
-                    "noopener,noreferrer",
+                    "noopener,noreferrer"
                   );
                 }}
               ></i>
@@ -62,77 +57,87 @@ const Card = (props) => {
                   window.open(
                     `https://${props.UserData.blog}`,
                     "_blank",
-                    "noopener,noreferrer",
+                    "noopener,noreferrer"
                   );
                 }}
               ></i>
-              <div className="scale-95 ml-2">
-                <Checkbox />
-              </div>
             </div>
 
-            <div className="flex gap-2 justify-center md:justify-between items-center w-full">
+            <div className="flex justify-center md:block md:absolute md:right-3 md:top-3 scale-95">
+              <Checkbox />
+            </div>
+
+            <div className="md:absolute md:right-14 md:top-2 border-none"></div>
+
+            <span>
+              <p className="font-light font-grotesk mb-2">
+                @{props.UserData.login}
+              </p>
+            </span>
+
+            <div className="flex gap-1 justify-around items-center w-full">
               <div
-                className="font-grotesk flex-1 text-sm bg-[#FF6B4A] border-2 border-black px-2 py-3 text-white font-bold focus:outline-none cursor-pointer hover:scale-95 hover:shadow-lg transition-all"
+                className="font-grotesk text-sm flex-1 md:flex-none md:w-fit bg-[#FF6B4A] border-2 border-black px-1.5 py-2 text-white font-bold focus:outline-none cursor-pointer hover:scale-95 hover:shadow-lg transition-all"
                 onClick={() => {
                   window.open(
                     `https://github.com/${Username}?tab=followers`,
                     "_blank",
-                    "noopener,noreferrer",
+                    "noopener,noreferrer"
                   );
                 }}
               >
                 {props.UserData.followers}
-                <span className="font-semibold text-xs md:text-sm text-black flex flex-col font-grotesk">
+                <span className="font-semibold text-s text-black flex flex-col font-grotesk">
                   Followers{" "}
                 </span>
               </div>
 
               <div
-                className="font-grotesk flex-1 text-sm bg-[#FF6B4A] border-2 border-black px-2 py-3 text-white font-bold focus:outline-none cursor-pointer hover:scale-95 hover:shadow-lg transition-all"
+                className="font-grotesk text-sm flex-1 md:flex-none bg-[#FF6B4A] border-2 border-black px-1.5 py-2 text-white font-bold focus:outline-none cursor-pointer hover:scale-95 hover:shadow-lg transition-all"
                 onClick={() => {
                   window.open(
                     `https://github.com/${Username}?tab=following`,
                     "_blank",
-                    "noopener,noreferrer",
+                    "noopener,noreferrer"
                   );
                 }}
               >
                 {props.UserData.following}
-                <span className="font-semibold text-xs md:text-sm text-black flex flex-col font-grotesk">
+                <span className="font-semibold text-s text-black flex flex-col font-grotesk">
                   Following{" "}
                 </span>
               </div>
 
               <div
-                className="font-grotesk flex-1 text-sm bg-[#FF6B4A] border-2 border-black px-2 py-3 text-white font-bold focus:outline-none cursor-pointer hover:scale-95 hover:shadow-lg transition-all"
+                className="font-grotesk text-sm flex-1 md:flex-none bg-[#FF6B4A] border-2 border-black px-1.5 py-2 text-white font-bold focus:outline-none cursor-pointer hover:scale-95 hover:shadow-lg transition-all"
                 onClick={() => {
                   window.open(
                     `https://github.com/${Username}?tab=repositories`,
                     "_blank",
-                    "noopener,noreferrer",
+                    "noopener,noreferrer"
                   );
                 }}
               >
                 {props.UserData.public_repos}
-                <span className="font-semibold text-xs md:text-sm text-black flex flex-col font-grotesk">
+                <span className="font-semibold text-s text-black flex flex-col font-grotesk">
                   Repository{" "}
                 </span>
               </div>
             </div>
 
-            <div className="w-full font-grotesk font-light mt-4 min-h-10 border-2 border-black rounded-2xl bg-orange-200 p-2 text-center text-sm">
+            <div className="w-full font-grotesk font-light mt-2 min-h-10 border-2 border-black rounded-2xl bg-orange-200 p-2 text-center">
               {props.UserData.bio}
             </div>
 
-            <div className="flex flex-col md:flex-row gap-2 mt-4 w-full">
+
+            <div className="flex flex-col md:flex-row gap-2 justify-around mt-2 w-full">
               <button
-                className="font-grotesk text-sm w-full bg-transparent border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] px-4 py-3 text-black font-semibold focus:outline-none cursor-pointer active:scale-95 hover:bg-[#f4f4f441] flex items-center justify-center gap-2"
+                className="font-grotesk text-sm w-full bg-transparent border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] px-4 md:px-10 py-2 text-black font-semibold focus:outline-none cursor-pointer active:scale-95 whitespace-nowrap hover:bg-[#f4f4f441]"
                 onClick={() => {
                   window.open(
                     `https://github.com/${Username}`,
                     "_blank",
-                    "noopener,noreferrer",
+                    "noopener,noreferrer"
                   );
                 }}
               >
@@ -141,7 +146,7 @@ const Card = (props) => {
               </button>
 
               <button
-                className="font-grotesk text-sm w-full bg-[#8fbdf8] border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] px-4 py-3 text-black font-semibold focus:outline-none cursor-pointer active:scale-95"
+                className="font-grotesk text-sm w-full bg-[#8fbdf8] border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] px-4 md:px-10 py-3 text-black font-semibold focus:outline-none cursor-pointer active:scale-95 whitespace-nowrap"
                 onClick={() => {
                   navigate(`/${Username}/repos`);
                 }}
@@ -153,7 +158,7 @@ const Card = (props) => {
         </div>
 
         <button
-          className="font-grotesk text-sm w-full rounded bg-[#41a062] hover:bg-[#69b684] hover:text-black border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] py-3 text-white font-semibold focus:outline-none cursor-pointer active:scale-95 transition-all flex items-center justify-center gap-2"
+          className="font-grotesktext-sm md:w-full rounded bg-[#41a062] hover:bg-[#69b684] hover:text-black border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] px-10 py-3 text-white font-semibold focus:outline-none cursor-pointer active:scale-95 transition-all"
           onClick={async () => {
             const profileUrl = `https://github.com/${Username}`;
 
@@ -191,16 +196,14 @@ const Card = (props) => {
             ([name, count]) => ({
               name,
               count,
-            }),
+            })
           );
 
           console.log(chartData);
 
           return (
-            <div className="bg-white w-full h-72 border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] p-2 rounded-2xl mt-2">
-              <h3 className="font-archivo text-lg mb-2 ml-2 text-black text-center">
-                Top Languages
-              </h3>
+            <div className="bg-white w-full h-72 border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] p-2 rounded-2xl">
+              <h3 className="font-archivo text-lg mb-2 ml-2 text-black text-center">Top Languages</h3>
               <ResponsiveContainer width="100%" height="80%">
                 <BarChart data={chartData} layout="vertical">
                   <XAxis type="number" hide />

@@ -6,10 +6,10 @@ const Navbar = () => {
 
   return (
     <nav className="w-full bg-[#f4f4f4] border-b-2 border-black relative z-50">
-      {/* Main Header Row */}
+
       <div className="flex items-center justify-between px-4 py-3 md:px-12 md:py-3">
         
-        {/* Brand Section */}
+
         <div className="flex items-center gap-2 z-50">
           <i className="ri-github-fill text-2xl md:text-3xl text-black hover:scale-110 cursor-pointer"></i>
           <span className="font-archivo text-lg md:text-xl text-black font-bold cursor-pointer">
@@ -17,7 +17,7 @@ const Navbar = () => {
           </span>
         </div>
 
-        {/* Desktop Menu (Hidden on Mobile) */}
+
         <div className="hidden md:flex items-center gap-8">
           <div className="flex flex-col items-start">
              <p className="text-black font-sans text-xs font-normal">
@@ -40,7 +40,7 @@ const Navbar = () => {
           </div>
         </div>
 
-        {/* Mobile Hamburger Button */}
+
         <button 
           className="md:hidden p-1 border-2 border-black shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] bg-[#f4f4f4] active:scale-95 transition-transform"
           onClick={() => setIsOpen(!isOpen)}
@@ -54,11 +54,11 @@ const Navbar = () => {
         </button>
       </div>
 
-      {/* Mobile Dropdown Menu */}
+
       {isOpen && (
         <div className="md:hidden absolute top-full left-0 w-full bg-[#f4f4f4f5] border-b-2 border-black px-4 py-6 flex flex-col gap-4 shadow-[0px_10px_0px_0px_rgba(0,0,0,0.1)] animate-in slide-in-from-top-2">
           
-          {/* Subtitle moved inside menu for mobile */}
+
           <p className="text-black font-sans text-xs font-normal pb-2 border-b border-gray-200">
             Browse users and their profiles via{" "}
             <a href="https://developer.github.com/v3/" target="_blank" rel="noopener noreferrer" className="text-[#269930] font-bold hover:underline">
@@ -84,10 +84,10 @@ const Navbar = () => {
             
             <div className="h-px bg-black my-2"></div>
             
-            <button className="w-full font-grotesk text-base bg-transparent border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] py-3 font-semibold active:scale-95 transition-transform">
+            <button className="w-full font-grotesk text-base bg-transparent border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] py-3 font-semibold active:scale-95 transition-transform cursor-pointer">
               Login
             </button>
-            <button className="w-full font-grotesk text-base bg-[#FF6B4A] border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] py-3 font-semibold active:scale-95 transition-transform">
+            <button className="w-full font-grotesk text-base bg-[#FF6B4A] border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] py-3 font-semibold active:scale-95 transition-transform cursor-pointer">
               Signup
             </button>
           </div>
