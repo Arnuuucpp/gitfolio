@@ -55,7 +55,7 @@ const Card = (props) => {
                 className="ri-user-5-fill cursor-pointer"
                 onClick={() => {
                   window.open(
-                    `https://${props.UserData.blog}`,
+                    `${props.UserData.blog}`,
                     "_blank",
                     "noopener,noreferrer"
                   );
